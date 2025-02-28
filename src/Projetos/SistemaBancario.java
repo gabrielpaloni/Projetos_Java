@@ -338,7 +338,7 @@ public class SistemaBancario extends JFrame {
                         JOptionPane.showMessageDialog(frame, "Transferência realizada com sucesso!");
 
                         // Registrar a transferência
-                        String emailDestino = getEmailByUserId(idUsuarioDestino); // Método para obter o email do destinatário
+                        String emailDestino = getEmailByUserId(idUsuarioDestino);
                         recordTransfer(email, emailDestino, valorTransferencia);
 
                         updateBalance(lblSaldo, email, ocultarSaldo);

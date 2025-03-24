@@ -1,6 +1,6 @@
 package AULAS.Aula08_p2;
 
-public class Pessoa {
+public abstract class Pessoa{
     protected String nome;
     protected String endereco;
 

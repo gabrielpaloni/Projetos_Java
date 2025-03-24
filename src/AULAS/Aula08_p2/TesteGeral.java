@@ -1,4 +1,7 @@
 package AULAS.Aula08_p2;
+
+
+//PEDIR CPF E VALIDAR, MOSTRAR ERRO CASO FALSE
 import javax.swing.*;
 public class TesteGeral {
     public static void main(String[] args) {
@@ -10,7 +13,7 @@ public class TesteGeral {
             case 1:
                 String nome = JOptionPane.showInputDialog("Digite seu nome");
                 String endereco = JOptionPane.showInputDialog("Digite seu endereço");
-                Pessoa testePessoa = new Pessoa(nome, endereco);
+                PessoaFisica testePessoa = new PessoaFisica(nome, endereco);
                 JOptionPane.showMessageDialog(null, testePessoa);
                 break;
 
@@ -18,8 +21,9 @@ public class TesteGeral {
                 nome = JOptionPane.showInputDialog("Digite seu nome");
                 endereco = JOptionPane.showInputDialog("Digite seu endereço");
                 String rg = JOptionPane.showInputDialog("Digite seu RG");
-                String cpf = JOptionPane.showInputDialog("Digite seu CPF");
                 int idade = Integer.parseInt(JOptionPane.showInputDialog("Digite sua idade"));
+                String cpf = JOptionPane.showInputDialog("Digite seu CPF");
+                
                 PessoaFisica testePessoaFisica = new PessoaFisica(nome, endereco, rg, cpf, idade);
                 JOptionPane.showMessageDialog(null, testePessoaFisica);
                 break;

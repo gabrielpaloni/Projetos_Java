@@ -94,38 +94,6 @@ public class BancoDeDados {
         }
     }
 
-    public boolean transferir(String numeroContaOrigem, String chavePixDestino, double valor) {
-        double saldoAtual = getSaldoByAccountNumber(numeroContaOrigem);
-        if (saldoAtual < valor) {
-            System.out.println("Saldo insuficiente para a transferência.");
-            return false;
-        }
-
-        String numeroContaDestino = getNumeroContaByChavePix(chavePixDestino);
-        if (numeroContaDestino == null) {
-            System.out.println("Chave PIX de destino não encontrada.");
-            return false;
-        }
-
-        String nomeUsuarioDestino = getNomeUsuarioByChavePix(chavePixDestino);
-        if (nomeUsuarioDestino == null) {
-            System.out.println("Nome do usuário de destino não encontrado.");
-            return false;
-        }
-
-        try {
-            sacar(numeroContaOrigem, valor);
-            depositar(numeroContaDestino, valor);
-            adicionarTransacao(numeroContaOrigem, "Pix para " + nomeUsuarioDestino, -valor);
-            adicionarTransacao(numeroContaDestino, "Pix de " + getUserNameByAccountNumber(numeroContaOrigem), valor);
-            System.out.println("Transferência de R$ " + valor + " realizada com sucesso de " + numeroContaOrigem + " para " + numeroContaDestino);
-            return true;
-        } catch (SQLException e) {
-            System.out.println("Erro ao realizar a transferência: " + e.getMessage());
-            return false;
-        }
-    }
-
     public String getNumeroContaByChavePix(String chavePix) {
         String sql = "SELECT c.numero_conta FROM contas c JOIN usuarios u ON u.id_usuario = c.id_usuario WHERE u.chave_pix = ?";
         return executeQueryForSingleResult(sql, chavePix, "numero_conta");

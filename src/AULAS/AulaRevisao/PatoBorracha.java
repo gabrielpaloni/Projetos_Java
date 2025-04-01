@@ -24,6 +24,4 @@ public class PatoBorracha extends Pato {
     public String nada() {
         return nome+" ["+cor+"] boia.";
     }
-
-
 }
